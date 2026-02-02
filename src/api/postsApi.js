@@ -11,31 +11,47 @@ export const getPostById = async (id) => {
 };
 
 export const login = async (data) => {
-  const res = await fetch(`${BASE_URL}/login`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data)
-  });
-  
-  if (!res.ok) {
-    throw new Error(`Login failed: ${res.status}`);
+  try {
+    const res = await fetch(`${BASE_URL}/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+    
+    if (!res.ok) {
+      const errorData = await res.json().catch(() => ({}));
+      throw new Error(errorData.message || `Login failed: ${res.status}`);
+    }
+    
+    return res.json();
+  } catch (error) {
+    if (error.message === 'Failed to fetch') {
+      throw new Error('Cannot connect to server. Please check if the backend is running.');
+    }
+    throw error;
   }
-  
-  return res.json();
 };
 
 export const register = async (data) => {
-  const res = await fetch(`${BASE_URL}/register`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data)
-  });
-  
-  if (!res.ok) {
-    throw new Error(`Registration failed: ${res.status}`);
+  try {
+    const res = await fetch(`${BASE_URL}/register`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+    
+    if (!res.ok) {
+      const errorData = await res.json().catch(() => ({}));
+      throw new Error(errorData.message || `Registration failed: ${res.status}`);
+    }
+    
+    return res.json();
+  } catch (error) {
+    if (error.message === 'Failed to fetch') {
+      throw new Error('Cannot connect to server. Please check if the backend is running.');
+    }
+    throw error;
   }
-  
-  return res.json();
 };
 
 export const createPost = async (post, token) => {
