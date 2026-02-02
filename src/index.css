@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #0f172a;
+  color: #e5e7eb;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 24px;
+}
+
+.post-card {
+  background: #020617;
+  border: 1px solid #1e293b;
+  padding: 16px;
+  margin-bottom: 16px;
+  border-radius: 10px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  background: #020617;
+  color: white;
+  border: 1px solid #1e293b;
+}
+
+button {
+  background: #38bdf8;
+  border: none;
+  padding: 10px 16px;
+  cursor: pointer;
+}
