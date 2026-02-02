@@ -1,4 +1,4 @@
-const BASE_URL = "https://community-forum-backend-d3kp.onrender.com";
+const BASE_URL = "https://community-forum-backend-4g6j.onrender.com";
 
 export const getPosts = async () => {
   const res = await fetch(`${BASE_URL}/posts?_sort=createdAt&_order=desc`);
